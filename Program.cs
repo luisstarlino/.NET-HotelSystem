@@ -6,40 +6,33 @@ Console.OutputEncoding = Encoding.UTF8;
 // --- MAIN MENU
 Menu SystemHotel = new Menu();
 
-while(SystemHotel.Online)
+
+
+while (SystemHotel.Online)
 {
     SystemHotel.ShowOptions();
     var selectedOption = Console.ReadLine();
 
-    switch(selectedOption)
+    switch (selectedOption)
     {
         case "1":
-            Console.WriteLine("Type 1...");
-        break;
+            SystemHotel.CreateNewSuite();
+            break;
+        case "2":
+            SystemHotel.ListSuites();
+            break;
+        case "3":
+            SystemHotel.AddNewReservation();
+            break;
         case "4":
+            SystemHotel.RemoveReserevation();
+            break;
+        case "5":
+            SystemHotel.ListReservations();
+
+            break;
+        case "6":
             SystemHotel.Logout();
-        break;
+            break;
     }
 }
-
-
-// Cria os modelos de hóspedes e cadastra na lista de hóspedes
-List<Pessoa> hospedes = new List<Pessoa>();
-
-Pessoa p1 = new Pessoa(nome: "Hóspede 1");
-Pessoa p2 = new Pessoa(nome: "Hóspede 2");
-
-hospedes.Add(p1);
-hospedes.Add(p2);
-
-// Cria a suíte
-Suite suite = new Suite(tipoSuite: "Premium", capacidade: 2, valorDiaria: 30);
-
-// Cria uma nova reserva, passando a suíte e os hóspedes
-Reserva reserva = new Reserva(diasReservados: 100);
-reserva.CadastrarSuite(suite);
-reserva.CadastrarHospedes(hospedes);
-
-// Exibe a quantidade de hóspedes e o valor da diária
-Console.WriteLine($"Hóspedes: {reserva.ObterQuantidadeHospedes()}");
-Console.WriteLine($"Valor diária: {reserva.CalcularValorDiaria().ToString("C")}");

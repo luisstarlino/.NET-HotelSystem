@@ -4,12 +4,12 @@ public class Menu
 {
     public bool Online { get; set; }
     List<Suite> AvailableSuites { get; set; }
-    List<Reserva> CurrentReservations { get; set; }
+    List<Reservation> CurrentReservations { get; set; }
     public Menu()
     {
         Online = true;
         AvailableSuites = new List<Suite>();
-        CurrentReservations = new List<Reserva>();
+        CurrentReservations = new List<Reservation>();
     }
 
     public void Logout()
@@ -35,7 +35,7 @@ public class Menu
         Console.WriteLine("---- AVAILABLES SUITES ----");
         for (int i = 0; i < AvailableSuites.Count; i++)
         {
-            Console.WriteLine($"{i + 1} | NAME: {AvailableSuites[i].TipoSuite} | VALUE PER DAY: {AvailableSuites[i].ValorDiaria.ToString("C")} | MAX PEOPLE: {AvailableSuites[i].Capacidade}");
+            Console.WriteLine($"{i + 1} | NAME: {AvailableSuites[i].Name} | VALUE PER DAY: {AvailableSuites[i].ValuePerDay.ToString("C")} | MAX PEOPLE: {AvailableSuites[i].MaxPeople}");
         }
         Console.WriteLine("");
 
@@ -46,7 +46,7 @@ public class Menu
         Console.WriteLine("---- RESERVATIONS ACTIVES ----");
         for (int i = 0; i < CurrentReservations.Count; i++)
         {
-            Console.WriteLine($"{i + 1} | SUITE NAME: {CurrentReservations[i].Suite.TipoSuite} | GUESTS: {CurrentReservations[i].Hospedes.Count} | DAYS: {CurrentReservations[i].DiasReservados}");
+            Console.WriteLine($"{i + 1} | SUITE NAME: {CurrentReservations[i].Suite.Name} | GUESTS: {CurrentReservations[i].Guests.Count} | DAYS: {CurrentReservations[i].ReservedDays}");
         }
 
     }
@@ -66,9 +66,9 @@ public class Menu
 
         AvailableSuites.Add(new Suite()
         {
-            Capacidade = Int32.Parse(maxPeople),
-            TipoSuite = name,
-            ValorDiaria = Decimal.Parse(valuePerDay)
+            MaxPeople = Int32.Parse(maxPeople),
+            Name = name,
+            ValuePerDay = Decimal.Parse(valuePerDay)
         });
 
         Console.Clear();
@@ -99,12 +99,12 @@ public class Menu
         var NumberOfPeople = Int32.Parse(Console.ReadLine());
 
         // Cria os modelos de hóspedes e cadastra na lista de hóspedes
-        List<Pessoa> guests = new List<Pessoa>();
+        List<Person> guests = new List<Person>();
         for (int fillFakeName = 0; fillFakeName < NumberOfPeople; fillFakeName++)
         {
-            guests.Add(new Pessoa
+            guests.Add(new Person
             {
-                Nome = $"Person {fillFakeName + 1}"
+                Name = $"Person {fillFakeName + 1}"
             });
 
         }
@@ -114,9 +114,9 @@ public class Menu
 
 
         // -- CREATE NEW RESERVATION
-        Reserva reservation = new Reserva(diasReservados: DaysSelected);
-        reservation.CadastrarSuite(AvailableSuites[selectedOption - 1]);
-        reservation.CadastrarHospedes(guests);
+        Reservation reservation = new Reservation(reservedDays: DaysSelected);
+        reservation.AddSuite(AvailableSuites[selectedOption - 1]);
+        reservation.AddGuests(guests);
 
         CurrentReservations.Add(reservation);
 
@@ -148,8 +148,8 @@ public class Menu
 
         Console.Clear();
         Console.WriteLine("CHECKOUT ON THIS RESERVATION");
-        Console.WriteLine($"Value Per Day: {removeThis.Suite.ValorDiaria.ToString("C")}");
-        Console.WriteLine($"Total: {removeThis.CalcularValorDiaria().ToString("C")}");
+        Console.WriteLine($"Value Per Day: {removeThis.Suite.ValuePerDay.ToString("C")}");
+        Console.WriteLine($"Total: {removeThis.GetTotalValue().ToString("C")}");
 
         CurrentReservations.Remove(removeThis);
     }

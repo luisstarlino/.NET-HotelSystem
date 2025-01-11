@@ -4,15 +4,15 @@ namespace DesafioProjetoHospedagem.Models
     {
         public Suite() { }
 
-        public Suite(string tipoSuite, int capacidade, decimal valorDiaria)
+        public Suite(string name, int maxPeople, decimal valuePerDay)
         {
-            TipoSuite = tipoSuite;
-            Capacidade = capacidade;
-            ValorDiaria = valorDiaria;
+            Name = name;
+            MaxPeople = maxPeople;
+            ValuePerDay = valuePerDay;
         }
 
-        public string TipoSuite { get; set; }
-        public int Capacidade { get; set; }
-        public decimal ValorDiaria { get; set; }
+        public string Name { get; set; }
+        public int MaxPeople { get; set; }
+        public decimal ValuePerDay { get; set; }
     }
 }

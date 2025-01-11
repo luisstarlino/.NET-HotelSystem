@@ -1,21 +1,76 @@
-# DIO - Trilha .NET - Explorando a linguagem C#
-www.dio.me
+# 🏢 Hotel System - Console App 🖥️
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de explorando a linguagem C#, da trilha .NET da DIO.
+![.NET](https://img.shields.io/badge/6.0-512BD4?style=flat&logo=dotnet&logoColor=white) ![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=flat)
 
-## Contexto
-Você foi contratado para construir um sistema de hospedagem, que será usado para realizar uma reserva em um hotel. Você precisará usar a classe Pessoa, que representa o hóspede, a classe Suíte, e a classe Reserva, que fará um relacionamento entre ambos.
 
-O seu programa deverá cálcular corretamente os valores dos métodos da classe Reserva, que precisará trazer a quantidade de hóspedes e o valor da diária, concedendo um desconto de 10% para caso a reserva seja para um período maior que 10 dias.
+## 🖊️ About
+The **Hotel System Console App** is a **Console Application** built with **.NET 6.0**.  
 
-## Regras e validações
-1. Não deve ser possível realizar uma reserva de uma suíte com capacidade menor do que a quantidade de hóspedes. Exemplo: Se é uma suíte capaz de hospedar 2 pessoas, então ao passar 3 hóspedes deverá retornar uma exception.
-2. O método ObterQuantidadeHospedes da classe Reserva deverá retornar a quantidade total de hóspedes, enquanto que o método CalcularValorDiaria deverá retornar o valor da diária (Dias reservados x valor da diária).
-3. Caso seja feita uma reserva igual ou maior que 10 dias, deverá ser concedido um desconto de 10% no valor da diária.
+Its main objective is to provide an intuitive interface for managing hotel operations, including guests, suites and reservations. This application features a **menu-driven** system for navigation and is ideal for demonstrating back-end logic and basic data management.
 
+
+> Based on the "DIO" .NET course, by Leonardo Buta, with improvements implemented for a more automated dynamic system.
+
+## 💻 Technologies Used
+- 🔣 **.NET 6.0**: A modern, cross-platform framework for building applications.  
+
+## 🔵 The Real Challenge - Based on the curse
+
+The program must correctly calculate the values of the methods of the Reservation class, which will need to provide the number of guests and the daily rate, granting a 10% discount if the reservation is for a period longer than 10 days.
+
+## 🚀 Features
+- **Integrated Menu System**: Navigate through functionalities with ease.  
+- **Entity-Relationship Model**: Supports key entities such as `Person`, `Suite`, and `Reservation`.  
+- **Reservation Methods**: Implements three core methods for managing reservations:
+  - Calculate total stay cost.
+  - Add a new reservation.
+  - Display reservation details.
+
+
+## 🛠️ Installation and Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Luixs/HotelManagementApp
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd HotelManagementApp
+   ```
+
+3. Build and run the application:
+   ```bash
+   dotnet build
+   dotnet run
+   ```
+
+---
+
+## 🗉️ Menu Options
+The application provides a menu-driven system with the following options:
+
+![Diagrama de classe estacionamento](/demo/demo-4.png)
+
+
+## 📄 Entity-Relationship Model
+
+### **Entities**
+1. **Person**: Represents a guest with relevant details.  
+2. **Suite**: Represents a suite with attributes like number, capacity, and price.  
+3. **Reservation**: Links `Person` and `Suite` and provides functionality for:  
+   - **Calculating total stay cost**.  
+   - **Adding a new reservation**.  
+   - **Displaying reservation details**.
 
 ![Diagrama de classe estacionamento](diagrama_classe_hotel.png)
 
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+## 🌆 System Demo 
+
+### List All Suites
+![Diagrama de classe estacionamento](/demo/demo-1.png)
+
+### New Suite
+![Diagrama de classe estacionamento](/demo/demo-2.png)
+
+### All Reservations
+![Diagrama de classe estacionamento](/demo/demo-3.png)

@@ -30,12 +30,12 @@ The program must correctly calculate the values of the methods of the Reservatio
 ## 🛠️ Installation and Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Luixs/HotelManagementApp
+   git clone https://github.com/luisstarlino/.NET-HotelSystem
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd HotelManagementApp
+   cd .NET-HotelSystem
    ```
 
 3. Build and run the application:

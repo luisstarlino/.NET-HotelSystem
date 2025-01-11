@@ -3,6 +3,26 @@ using DesafioProjetoHospedagem.Models;
 
 Console.OutputEncoding = Encoding.UTF8;
 
+// --- MAIN MENU
+Menu SystemHotel = new Menu();
+
+while(SystemHotel.Online)
+{
+    SystemHotel.ShowOptions();
+    var selectedOption = Console.ReadLine();
+
+    switch(selectedOption)
+    {
+        case "1":
+            Console.WriteLine("Type 1...");
+        break;
+        case "4":
+            SystemHotel.Logout();
+        break;
+    }
+}
+
+
 // Cria os modelos de hóspedes e cadastra na lista de hóspedes
 List<Pessoa> hospedes = new List<Pessoa>();
 
